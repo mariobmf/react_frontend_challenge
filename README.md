@@ -1,11 +1,14 @@
 - OK: Estilizar o menu selecionado
 - OK: Estilizar focus na borda do input
 - OK: Criar Lista de Usuários
-- Configurar IndexDb
+- OK: Configurar IndexDb
   - Criar services
-    - save
-    - list
-    - delete
+    - OK: list
+    - OK: save
+    - OK: delete
+- Criar mascara na listagem dos dados
+- Separar card com dados do usuário em componente
+- Card para adicionar usuario
 - Criar testes unitários
 - Criar testes E2E
 - Validar CPF

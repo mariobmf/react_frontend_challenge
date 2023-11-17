@@ -5,20 +5,26 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { InputText } from '@/components/InputText';
 import { InputTextMask } from '@/components/InputTextMask';
 import { Button } from '@/components/Button';
+import { useCreateUser } from '@/hooks/useCreateUser';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 type RegistrationFormProps = {
   name: string;
   email: string;
   cpf: string;
-  phoneNumber: string;
+  phone: string;
 };
 
 const schema = yup
   .object({
-    name: yup.string().required('Nome obrigatório'),
+    name: yup
+      .string()
+      .required('Nome obrigatório')
+      .min(3, 'Campo deve ter no mínimo 3 caracteres'),
     email: yup.string().required('Email obrigatório').email('Email inválido'),
     cpf: yup.string().min(14, 'CPF inválido').required('CPF obrigatório'),
-    phoneNumber: yup
+    phone: yup
       .string()
       .min(16, 'Número de telefone inválido')
       .required('Número obrigatório'),
@@ -26,6 +32,7 @@ const schema = yup
   .required();
 
 export default function Register() {
+  const router = useRouter();
   const {
     handleSubmit,
     register,
@@ -35,15 +42,24 @@ export default function Register() {
     resolver: yupResolver(schema),
   });
 
+  const { mutateAsync: handleCreateUser, isPending: createUserIsLoading } =
+    useCreateUser();
+
   const name = watch('name');
   const email = watch('email');
   const cpf = watch('cpf');
-  const phoneNumber = watch('phoneNumber');
+  const phoneNumber = watch('phone');
 
   const handleFormSubmit: SubmitHandler<
     RegistrationFormProps
   > = async formData => {
-    console.log(formData);
+    try {
+      await handleCreateUser(formData);
+      toast.success('Usuário cadastrado com sucesso');
+      router.push('/');
+    } catch (error) {
+      toast.error('Erro ao cadastrar usuário');
+    }
   };
   return (
     <div className="flex h-full w-full items-center justify-center">
@@ -73,11 +89,15 @@ export default function Register() {
         <InputTextMask
           label="Telefone"
           mask="cell_phone"
-          {...register('phoneNumber')}
-          error={errors.phoneNumber}
+          {...register('phone')}
+          error={errors.phone}
           filled={!!phoneNumber}
         />
-        <Button label="Cadastrar" type="submit" />
+        <Button
+          label="Cadastrar"
+          type="submit"
+          isLoading={createUserIsLoading}
+        />
       </form>
     </div>
   );

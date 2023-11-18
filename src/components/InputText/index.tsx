@@ -19,7 +19,7 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
     }, [filled, isFocused]);
 
     return (
-      <div className="flex w-full flex-col items-start" tabIndex={0}>
+      <div className="flex w-full flex-col items-start">
         {label && filledOrFocused && (
           <span
             data-state={filledOrFocused ? 'active' : ''}

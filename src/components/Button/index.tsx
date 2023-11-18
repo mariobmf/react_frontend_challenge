@@ -10,7 +10,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export function Button({ label, isLoading, className, ...rest }: ButtonProps) {
   return (
     <button
-      className="flex items-center justify-center rounded-full bg-custom-cyan-500 p-4 text-xl font-bold text-white hover:opacity-70 disabled:bg-custom-gray-50 disabled:text-custom-gray-200"
+      className={classNames(
+        'flex items-center justify-center rounded-full bg-custom-cyan-500 p-4 text-xl font-bold text-white hover:opacity-70 disabled:bg-custom-gray-50 disabled:text-custom-gray-200',
+        className,
+      )}
       {...rest}
     >
       {isLoading ? (

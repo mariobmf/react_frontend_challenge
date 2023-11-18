@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 const MENU_ITEMS = [
   {
     label: 'Usuários',
-    href: '/',
+    href: '/users',
   },
   {
     label: 'Cadastro',
@@ -23,7 +23,7 @@ export function TopMenu() {
           key={index}
           href={item.href}
           data-state={pathname === item.href ? 'active' : ''}
-          className="border-custom-gray-100 pb-2 text-lg text-custom-gray-500 hover:opacity-70 data-[state=active]:border-b-2 data-[state=active]:border-custom-cyan-500 data-[state=active]:font-bold"
+          className="border-custom-gray-100 pb-2 text-lg font-medium text-custom-gray-500 hover:opacity-70 data-[state=active]:border-b-2 data-[state=active]:border-custom-cyan-500 data-[state=active]:font-bold"
         >
           {item.label}
         </Link>

@@ -62,7 +62,8 @@ export default function Register() {
     }
   };
   return (
-    <div className="flex h-full w-full items-center justify-center">
+    <div className="flex h-full w-full flex-col items-center gap-8 p-4">
+      <h1>Cadastrar novo usuário</h1>
       <form
         onSubmit={handleSubmit(handleFormSubmit)}
         className="flex w-[400px] flex-col gap-4"
@@ -97,6 +98,7 @@ export default function Register() {
           label="Cadastrar"
           type="submit"
           isLoading={createUserIsLoading}
+          className="mt-8"
         />
       </form>
     </div>

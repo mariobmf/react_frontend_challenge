@@ -37,9 +37,10 @@ export default function Register() {
     handleSubmit,
     register,
     watch,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm<RegistrationFormProps>({
     resolver: yupResolver(schema),
+    mode: 'onBlur',
   });
 
   const { mutateAsync: handleCreateUser, isPending: createUserIsLoading } =
@@ -99,6 +100,7 @@ export default function Register() {
           type="submit"
           isLoading={createUserIsLoading}
           className="mt-8"
+          disabled={!isDirty || !isValid}
         />
       </form>
     </div>

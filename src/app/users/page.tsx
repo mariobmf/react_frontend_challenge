@@ -56,7 +56,7 @@ export default function Users() {
           </Card>
         </>
       ) : (
-        <Spinner className="h-20 w-20" />
+        <Spinner />
       )}
     </div>
   );

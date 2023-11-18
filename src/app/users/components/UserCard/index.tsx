@@ -14,7 +14,12 @@ export default function UserCard({
   onDeleteUser,
   deleteUserIsLoading,
 }: UserCardProps) {
-  if (deleteUserIsLoading) return <Spinner className="h-20 w-20" />;
+  if (deleteUserIsLoading)
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <Spinner />
+      </div>
+    );
 
   return (
     <>

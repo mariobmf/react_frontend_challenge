@@ -11,18 +11,12 @@ export function Button({ label, isLoading, className, ...rest }: ButtonProps) {
   return (
     <button
       className={classNames(
-        'flex items-center justify-center rounded-full bg-custom-cyan-500 p-4 text-xl font-bold text-white hover:opacity-70 disabled:bg-custom-gray-50 disabled:text-custom-gray-200',
+        'flex items-center justify-center rounded-full bg-custom-cyan-500 p-4 text-xl font-bold text-white hover:opacity-70 disabled:pointer-events-none disabled:bg-custom-gray-50 disabled:text-custom-gray-200',
         className,
       )}
       {...rest}
     >
-      {isLoading ? (
-        <div className="flex items-center justify-center">
-          <Spinner />
-        </div>
-      ) : (
-        label
-      )}
+      {isLoading ? <Spinner /> : label}
     </button>
   );
 }

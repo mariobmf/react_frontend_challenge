@@ -9,11 +9,14 @@
 - OK: Criar mascara na listagem dos dados
 - OK: Separar card com dados do usuário em componente
 - OK: Card para adicionar usuário
+- Responsividade
+  - OK: Menu Top
+  - OK: Form
+  - Users
 - Criar testes unitários
 - Criar testes E2E
 - Validar CPF
 - Revisar os use client
-- Responsividade
 
 Pré-requisitos:
 - OK: Deve ser possível criar, listar e excluir os dados cadastrados pelo formulário;

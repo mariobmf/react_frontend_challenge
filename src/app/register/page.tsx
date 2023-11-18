@@ -66,7 +66,7 @@ export default function Register() {
       <h1>Cadastrar novo usuário</h1>
       <form
         onSubmit={handleSubmit(handleFormSubmit)}
-        className="flex w-[400px] flex-col gap-4"
+        className="flex w-full flex-col gap-4 sm:w-[400px]"
       >
         <InputText
           label="Nome completo (sem abreviações)"

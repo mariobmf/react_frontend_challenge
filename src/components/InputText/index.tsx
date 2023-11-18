@@ -32,7 +32,7 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
           ref={ref}
           data-state={error ? 'error' : ''}
           className={classNames(
-            'w-full border-b-2 border-custom-gray-100 bg-transparent p-2 text-2xl font-medium text-custom-gray-500 placeholder-custom-gray-100 outline-none focus:placeholder-transparent data-[state=error]:border-custom-red-500',
+            'w-full border-b-2 border-custom-gray-100 bg-transparent p-2 text-lg font-medium text-custom-gray-500 placeholder-custom-gray-100 outline-none focus:placeholder-transparent data-[state=error]:border-custom-red-500 sm:text-2xl',
             className,
           )}
           placeholder={label || rest.placeholder}

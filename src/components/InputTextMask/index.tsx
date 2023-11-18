@@ -4,12 +4,12 @@ import React, {
   useCallback,
   useMemo,
   useState,
-} from "react";
-import { UseFormRegister, FieldValues, ErrorOption } from "react-hook-form";
-import classNames from "classnames";
-import { cpf, cell_phone, undefined_mask } from "./masks";
+} from 'react';
+import { UseFormRegister, FieldValues, ErrorOption } from 'react-hook-form';
+import classNames from 'classnames';
+import { cpf, cell_phone, undefined_mask } from './masks';
 
-type MaskType = "cpf" | "cell_phone";
+type MaskType = 'cpf' | 'cell_phone';
 
 interface InputTextMaskProps extends InputHTMLAttributes<HTMLInputElement> {
   mask: MaskType;
@@ -22,7 +22,7 @@ interface InputTextMaskProps extends InputHTMLAttributes<HTMLInputElement> {
 const InputTextMask = React.forwardRef<HTMLInputElement, InputTextMaskProps>(
   (
     { mask, prefix, label, filled, onChange, error, className, ...rest },
-    ref
+    ref,
   ) => {
     const [isFocused, setIsFocused] = useState(false);
 
@@ -33,10 +33,10 @@ const InputTextMask = React.forwardRef<HTMLInputElement, InputTextMaskProps>(
     const handleKeyUp = useCallback(
       (e: ChangeEvent<HTMLInputElement>) => {
         switch (mask) {
-          case "cpf":
+          case 'cpf':
             cpf(e);
             break;
-          case "cell_phone":
+          case 'cell_phone':
             cell_phone(e);
             break;
           default:
@@ -45,11 +45,11 @@ const InputTextMask = React.forwardRef<HTMLInputElement, InputTextMaskProps>(
         }
         return e;
       },
-      [mask]
+      [mask],
     );
 
     const applyMask = (event: ChangeEvent<HTMLInputElement>) => {
-      if (typeof onChange === "undefined") {
+      if (typeof onChange === 'undefined') {
         handleKeyUp(event);
       } else {
         onChange?.(handleKeyUp(event));
@@ -60,8 +60,8 @@ const InputTextMask = React.forwardRef<HTMLInputElement, InputTextMaskProps>(
       <div className="flex w-full flex-col items-start">
         {label && filledOrFocused && (
           <span
-            data-state={filledOrFocused ? "active" : ""}
-            className="text-custom-gray-100 font-medium focus:text-custom-gray-500 text-sm data-[state=active]:text-custom-gray-500"
+            data-state={filledOrFocused ? 'active' : ''}
+            className="text-sm font-medium text-custom-gray-100 focus:text-custom-gray-500 data-[state=active]:text-custom-gray-500"
           >
             {label}
           </span>
@@ -69,30 +69,30 @@ const InputTextMask = React.forwardRef<HTMLInputElement, InputTextMaskProps>(
         <input
           onChange={applyMask}
           ref={ref}
-          data-state={error ? "error" : ""}
+          data-state={error ? 'error' : ''}
           className={classNames(
-            "w-full border-b-2 outline-none font-medium border-custom-gray-100 bg-transparent p-2 text-2xl text-custom-gray-500 focus:placeholder-transparent placeholder-custom-gray-100 data-[state=error]:border-custom-red-500",
-            className
+            'w-full border-b-2 border-custom-gray-100 bg-transparent p-2 text-lg font-medium text-custom-gray-500 placeholder-custom-gray-100 outline-none focus:placeholder-transparent data-[state=error]:border-custom-red-500 sm:text-2xl',
+            className,
           )}
           placeholder={label || rest.placeholder}
           type="text"
           onFocus={() => setIsFocused(true)}
           {...rest}
-          onBlur={(event) => {
+          onBlur={event => {
             setIsFocused(false);
             rest.onBlur?.(event);
           }}
         />
         {error && (
-          <span className="text-custom-red-500 text-base mt-1">
+          <span className="mt-1 text-base text-custom-red-500">
             {error.message}
           </span>
         )}
       </div>
     );
-  }
+  },
 );
 
-InputTextMask.displayName = "InputTextMask";
+InputTextMask.displayName = 'InputTextMask';
 
 export { InputTextMask };

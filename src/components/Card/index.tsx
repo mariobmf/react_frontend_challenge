@@ -8,7 +8,7 @@ export function Card({ children, className }: CardProps) {
   return (
     <div
       className={classNames(
-        'relative max-w-[350px] rounded-md bg-custom-gray-50 p-4 shadow-md',
+        'relative w-full max-w-[350px] rounded-md bg-custom-gray-50 p-4 shadow-md',
         className,
       )}
     >

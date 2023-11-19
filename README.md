@@ -1,34 +1,56 @@
-- OK: Estilizar o menu selecionado
-- OK: Estilizar focus na borda do input
-- OK: Criar Lista de Usuários
-- OK: Configurar IndexDb
-  - Criar services
-    - OK: list
-    - OK: save
-    - OK: delete
-- OK: Criar mascara na listagem dos dados
-- OK: Separar card com dados do usuário em componente
-- OK: Card para adicionar usuário
-- Responsividade
-  - OK: Menu Top
-  - OK: Form
-  - OK: Users
-- OK: Form onBlur
-- OK: Ajustar Loadings
-- OK: Criar testes unitários
-- Criar um passo a passo de como rodar sua aplicação (Sugestão);
-- Criar uma breve descrição da solução utilizada.
-- Criar testes E2E
-- alterar para ECMAScript 6+
+# Tinnova Frontend Challenge
 
-Pré-requisitos:
-- OK: Deve ser possível criar, listar e excluir os dados cadastrados pelo formulário;
-validações);
-- OK: Fazer a persistência dos dados no localStorage ou IndexedDB;
-- OK: Recomendado uso de ECMAScript 6+ e React.JS;
-- OK: Utilizar ECMAScript 6+;
-- OK: Os inputs de texto e botão devem ter a aparência conforme o guia de estilo abaixo (com
-- OK: Testes, no mínimo testes unitários;
-- OK: Padrão de Projeto e boas práticas de Orientação a Objetos;
-- Criar um passo a passo de como rodar sua aplicação (Sugestão);
-- Criar uma breve descrição da solução utilizada.
+Este projeto é uma aplicação web que permite aos usuários visualizar e gerenciar informações. A aplicação permite aos usuários visualizar e gerenciar informações de forma eficiente e intuitiva.
+
+## Solução
+
+A solução foi construída utilizando o React para criar uma interface de usuário interativa e dinâmica. Para o armazenamento de dados, foi utilizado o IndexedDB. A interface do usuário foi projetada para ser simples e fácil de usar, com todas as funcionalidades acessíveis a partir da página principal.
+
+## Tecnologias
+
+- [React](https://react.dev)
+- [NextJS](https://nextjs.org)
+- [Tailwind](https://tailwindcss.com)
+- [React Hook Form](https://react-hook-form.com)
+- [React Query](https://tanstack.com/query/v3)
+- [Dexie](https://dexie.org)
+
+## Requisitos
+
+- NodeJS: v18+
+
+## Como rodar a aplicação em modo desenvolvimento
+
+```bash
+git clone https://github.com/mariobmf/react_frontend_challenge.git
+cd react_frontend_challenge
+npm install
+npm start dev
+```
+Abra o navegador e acesse `http://localhost:3000` para ver a aplicação em execução
+
+## Como rodar os testes
+
+```bash
+npm run test
+```
+para rodar em modo **watch**:
+```bash
+npm run test:watch
+```
+para rodar com **coverage**:
+```bash
+npm run test:cov
+```
+
+## Como rodar a aplicação em modo produção
+
+```bash
+git clone https://github.com/mariobmf/react_frontend_challenge.git
+cd react_frontend_challenge
+npm install
+npm build
+npm start
+```
+Abra o navegador e acesse `http://localhost:3000` para ver a aplicação em execução
+

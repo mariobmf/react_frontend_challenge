@@ -25,7 +25,7 @@ A solução foi construída utilizando o React para criar uma interface de usuá
 git clone https://github.com/mariobmf/react_frontend_challenge.git
 cd react_frontend_challenge
 npm install
-npm start dev
+npm run dev
 ```
 Abra o navegador e acesse `http://localhost:3000` para ver a aplicação em execução
 

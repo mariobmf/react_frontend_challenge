@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { UserCard } from '../UserCard';
 
@@ -31,12 +31,8 @@ describe('<UserCard />', () => {
 
     const buttonDelete = screen.getByRole('button');
 
-    act(() => {
-      userEvent.click(buttonDelete);
-    });
+    await userEvent.click(buttonDelete);
 
-    await waitFor(() => {
-      expect(mockHandleDeleteUser).toHaveBeenCalledTimes(1);
-    });
+    expect(mockHandleDeleteUser).toHaveBeenCalledTimes(1);
   });
 });

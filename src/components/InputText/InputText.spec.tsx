@@ -1,10 +1,4 @@
-import {
-  act,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { InputText } from '@/components/InputText';
 import userEvent from '@testing-library/user-event';
 
@@ -25,14 +19,8 @@ describe('<InputText />', () => {
     const mockLabel = 'Input Label';
     render(<InputText label={mockLabel} />);
     const input = screen.getByRole('textbox');
-
-    act(() => {
-      userEvent.click(input);
-    });
-
-    await waitFor(() => {
-      expect(screen.getByTestId('input-text-label')).toBeVisible();
-    });
+    await userEvent.click(input);
+    expect(screen.getByTestId('input-text-label')).toBeVisible();
   });
   it('should render the label outside the input when it is filled', async () => {
     const mockLabel = 'Input Label';
@@ -43,15 +31,9 @@ describe('<InputText />', () => {
     const mockLabel = 'Input Label';
     render(<InputText label={mockLabel} onBlur={() => {}} />);
     const input = screen.getByRole('textbox');
-
-    act(() => {
-      fireEvent.focus(input);
-      fireEvent.focusOut(input);
-    });
-
-    await waitFor(() => {
-      expect(screen.queryByTestId('input-text-label')).not.toBeInTheDocument();
-    });
+    await userEvent.click(input);
+    await userEvent.tab();
+    expect(screen.queryByTestId('input-text-label')).not.toBeInTheDocument();
   });
   it('should render an error message', async () => {
     const mockLabel = 'Input Label';

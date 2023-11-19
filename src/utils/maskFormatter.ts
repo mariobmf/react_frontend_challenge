@@ -1,9 +1,11 @@
 const phoneNumberMask = (value: string | number) => {
   const valueString = value.toString();
   let mask = valueString.replace(/\D/g, '');
-  mask = mask.replace(/^(\d{2})(\d)/g, '($1) $2');
-  mask = mask.replace(/(\d{1})(\d{4})/, '$1 $2');
-  mask = mask.replace(/(\d)(\d{4})$/, '$1-$2');
+  if (mask.length === 11) {
+    mask = mask.replace(/^(\d{2})(\d)(\d{4})(\d{4})/, '($1) $2 $3-$4');
+  } else {
+    mask = mask.replace(/^(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+  }
   return mask;
 };
 

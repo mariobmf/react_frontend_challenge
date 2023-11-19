@@ -15,10 +15,11 @@
   - OK: Users
 - OK: Form onBlur
 - OK: Ajustar Loadings
-- Criar testes unitários
+- OK: Criar testes unitários
+- Criar um passo a passo de como rodar sua aplicação (Sugestão);
+- Criar uma breve descrição da solução utilizada.
 - Criar testes E2E
-- Validar CPF
-- Revisar os use client
+- alterar para ECMAScript 6+
 
 Pré-requisitos:
 - OK: Deve ser possível criar, listar e excluir os dados cadastrados pelo formulário;
@@ -27,7 +28,7 @@ validações);
 - OK: Recomendado uso de ECMAScript 6+ e React.JS;
 - OK: Utilizar ECMAScript 6+;
 - OK: Os inputs de texto e botão devem ter a aparência conforme o guia de estilo abaixo (com
-- Testes, no mínimo testes unitários;
-- Padrão de Projeto e boas práticas de Orientação a Objetos;
+- OK: Testes, no mínimo testes unitários;
+- OK: Padrão de Projeto e boas práticas de Orientação a Objetos;
 - Criar um passo a passo de como rodar sua aplicação (Sugestão);
 - Criar uma breve descrição da solução utilizada.

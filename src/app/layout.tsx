@@ -11,6 +11,17 @@ export const metadata: Metadata = {
   description: 'Front-end Challenge',
 };
 
+const MENU_ITEMS = [
+  {
+    label: 'Usuários',
+    href: '/users',
+  },
+  {
+    label: 'Cadastro',
+    href: '/register',
+  },
+];
+
 export default function RootLayout({
   children,
 }: {
@@ -21,7 +32,7 @@ export default function RootLayout({
       <body className="relative flex h-full w-full flex-col bg-gradient-to-t from-gray-100 to-white">
         <AppProvider>
           <ToastContainer />
-          <TopMenu />
+          <TopMenu items={MENU_ITEMS} />
           {children}
         </AppProvider>
       </body>

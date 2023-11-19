@@ -7,7 +7,7 @@ import { Card } from '@/components/Card';
 import { Spinner } from '@/components/Spinner';
 import { useDeleteUser } from '@/hooks/useDeleteUser';
 import { useListUsers } from '@/hooks/useListUsers';
-import UserCard from './components/UserCard';
+import { UserCard } from './components/UserCard';
 
 export default function Users() {
   const router = useRouter();

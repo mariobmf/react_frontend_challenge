@@ -6,12 +6,14 @@ import { cpfMask, phoneNumberMask } from '@/utils/maskFormatter';
 interface UserCardProps {
   user: User;
   onDeleteUser: (id: string) => void;
+  onUpdateUser: (id: string) => void;
   deleteUserIsLoading?: boolean;
 }
 
 export function UserCard({
   user,
   onDeleteUser,
+  onUpdateUser,
   deleteUserIsLoading,
 }: UserCardProps) {
   if (deleteUserIsLoading)
@@ -36,10 +38,18 @@ export function UserCard({
         </p>
       </div>
       <button
+        className="absolute right-12 top-4 hover:opacity-70"
+        onClick={() => onUpdateUser(user.id)}
+        aria-label="Editar Usuário"
+      >
+        <Image src="edit.svg" width={20} height={20} alt="Ícone de Lápis" />
+      </button>
+      <button
         className="absolute right-4 top-4 hover:opacity-70"
         onClick={() => onDeleteUser(user.id)}
+        aria-label="Deletar Usuário"
       >
-        <Image src="trash.svg" width={24} height={24} alt="Ícone de Lixeira" />
+        <Image src="trash.svg" width={20} height={20} alt="Ícone de Lixeira" />
       </button>
     </>
   );

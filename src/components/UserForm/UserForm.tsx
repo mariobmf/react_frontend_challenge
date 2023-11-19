@@ -4,17 +4,22 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { InputText } from '@/components/InputText';
 import { InputTextMask } from '@/components/InputTextMask';
 import { Button } from '@/components/Button';
+import { cpfMask, phoneNumberMask } from '@/utils/maskFormatter';
 
-export type FormDataProps = {
+export type UserFormDataProps = {
   name: string;
   email: string;
   cpf: string;
   phone: string;
 };
 
-interface RegisterFormProps {
-  onSubmit: (data: FormDataProps) => void;
+type FormType = 'create' | 'update';
+
+interface UserFormProps {
+  onSubmit: (data: UserFormDataProps) => void;
   isLoading?: boolean;
+  type: FormType;
+  defaultValues?: UserFormDataProps;
 }
 
 const schema = yup
@@ -32,18 +37,31 @@ const schema = yup
   })
   .required();
 
-export function RegisterForm({
+export function UserForm({
   onSubmit,
   isLoading = false,
-}: RegisterFormProps) {
+  type,
+  defaultValues,
+}: UserFormProps) {
+  const defaultValuesFormatted = defaultValues
+    ? {
+        ...defaultValues,
+        cpf: cpfMask(defaultValues.cpf),
+        phone: phoneNumberMask(defaultValues.phone),
+      }
+    : undefined;
+
   const {
     handleSubmit,
     register,
     watch,
     formState: { errors, isDirty, isValid },
-  } = useForm<FormDataProps>({
+  } = useForm<UserFormDataProps>({
     resolver: yupResolver(schema),
     mode: 'onBlur',
+    defaultValues:
+      (type === 'update' && defaultValuesFormatted) ||
+      ({} as UserFormDataProps),
   });
 
   const name = watch('name');
@@ -51,7 +69,7 @@ export function RegisterForm({
   const cpf = watch('cpf');
   const phone = watch('phone');
 
-  const handleFormSubmit: SubmitHandler<FormDataProps> = async formData => {
+  const handleFormSubmit: SubmitHandler<UserFormDataProps> = async formData => {
     onSubmit(formData);
   };
 
@@ -91,7 +109,7 @@ export function RegisterForm({
         aria-label="Telefone"
       />
       <Button
-        label="Cadastrar"
+        label={type === 'create' ? 'Cadastrar' : 'Atualizar'}
         type="submit"
         isLoading={isLoading}
         className="mt-8"

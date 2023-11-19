@@ -1,6 +1,6 @@
 # Tinnova Frontend Challenge
 
-Este projeto é uma aplicação web que permite aos usuários visualizar e gerenciar informações. A aplicação permite aos usuários visualizar e gerenciar informações de forma eficiente e intuitiva.
+Este projeto é uma aplicação web que permite aos usuários visualizar e gerenciar informações de forma eficiente e intuitiva.
 
 ## Solução
 

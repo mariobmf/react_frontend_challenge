@@ -11,6 +11,7 @@ const customJestConfig = {
   collectCoverageFrom: [
     '<rootDir>/src/components/**/*.tsx',
     '<rootDir>/src/app/**/components/**/*.tsx',
+    '<rootDir>/src/services/*/*.ts',
   ],
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
   moduleDirectories: ['node_modules', '<rootDir>/'],

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { UserForm } from '../UserForm';
 import { cpfMask, phoneNumberMask } from '@/utils/maskFormatter';
@@ -23,7 +23,7 @@ describe('<UserForm />', () => {
     expect(registrationButton).not.toBeEnabled();
     expect(editButton).not.toBeInTheDocument();
   });
-  it('should render in edit mode correctly', () => {
+  it('should render in edit mode correctly', async () => {
     const user = {
       id: '1',
       name: 'Luiz Souza',
@@ -34,6 +34,7 @@ describe('<UserForm />', () => {
     render(
       <UserForm type="update" defaultValues={user} onSubmit={mockSubmitForm} />,
     );
+    expect(await screen.findByText('Atualizar')).toBeInTheDocument(); // wait for the form to be rendered
     const inputName = screen.getByRole('textbox', { name: 'Nome' });
     const inputEmail = screen.getByRole('textbox', { name: 'Email' });
     const inputCpf = screen.getByRole('textbox', { name: 'CPF' });

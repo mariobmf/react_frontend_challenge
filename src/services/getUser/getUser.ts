@@ -1,5 +1,5 @@
 import { User } from '@/interfaces/user.interface';
-import { database } from './db';
+import { database } from '../db';
 
 export async function getUser(userId: string): Promise<User | null> {
   const rawUser = await database.users.get({

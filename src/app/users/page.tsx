@@ -36,7 +36,7 @@ export default function Users() {
 
   return (
     <div className="flex w-full justify-center">
-      <div className="container grid max-w-[900px] grid-cols-[repeat(auto-fit,minmax(250px,1fr))] justify-items-center gap-4 p-4">
+      <div className="container grid max-w-[900px] auto-rows-fr grid-cols-[repeat(auto-fit,minmax(250px,1fr))] justify-items-center gap-4 p-4">
         {users && !createUserIsLoading ? (
           <>
             {users.map(user => (

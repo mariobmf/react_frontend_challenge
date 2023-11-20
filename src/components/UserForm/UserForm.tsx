@@ -32,7 +32,7 @@ const schema = yup
     cpf: yup.string().min(14, 'CPF inválido').required('CPF obrigatório'),
     phone: yup
       .string()
-      .min(16, 'Número de telefone inválido')
+      .min(14, 'Número de telefone inválido')
       .required('Número obrigatório'),
   })
   .required();

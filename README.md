@@ -2,6 +2,11 @@
 
 Este projeto é uma aplicação web que permite aos usuários visualizar e gerenciar informações de forma eficiente e intuitiva.
 
+<p float="left">
+  <img src="./public/print1.png" width="400" />
+  <img src="./public/print2.png" width="400" />
+</p>
+
 ## Solução
 
 A solução foi construída utilizando o React para criar uma interface de usuário interativa e dinâmica. Para o armazenamento de dados, foi utilizado o IndexedDB. A interface do usuário foi projetada para ser simples e fácil de usar, com todas as funcionalidades acessíveis a partir da página principal.

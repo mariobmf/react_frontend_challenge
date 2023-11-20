@@ -25,7 +25,7 @@ export function UserCard({
 
   return (
     <>
-      <h2>{user.name}</h2>
+      <h2 className="whitespace-pre-wrap pr-12">{user.name}</h2>
       <div className="ml-2 mt-1">
         <p className="text-sm">
           <strong>CPF:</strong> {cpfMask(user.cpf)}

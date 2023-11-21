@@ -39,6 +39,22 @@ describe('<UserCard />', () => {
     expect(buttonEdit).toBeVisible();
   });
 
+  it('should render the dialog to delete the user', async () => {
+    render(
+      <UserCard
+        user={user}
+        onUpdateUser={mockHandleUpdateUser}
+        onDeleteUser={mockHandleDeleteUser}
+      />,
+    );
+    const buttonDelete = screen.getByRole('button', {
+      name: 'Deletar Usuário',
+    });
+    await userEvent.click(buttonDelete);
+    const dialog = screen.getByRole('alertdialog');
+    expect(dialog).toBeVisible();
+  });
+
   it('should call the delete user function', async () => {
     render(
       <UserCard
@@ -51,7 +67,31 @@ describe('<UserCard />', () => {
       name: 'Deletar Usuário',
     });
     await userEvent.click(buttonDelete);
+    const confirmButtonDelete = screen.getByRole('button', {
+      name: 'Excluir',
+    });
+    await userEvent.click(confirmButtonDelete);
     expect(mockHandleDeleteUser).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call the cancel user deletion function', async () => {
+    render(
+      <UserCard
+        user={user}
+        onUpdateUser={mockHandleUpdateUser}
+        onDeleteUser={mockHandleDeleteUser}
+      />,
+    );
+    const buttonDelete = screen.getByRole('button', {
+      name: 'Deletar Usuário',
+    });
+    await userEvent.click(buttonDelete);
+    const cancelDelete = screen.getByRole('button', {
+      name: 'Cancelar',
+    });
+    await userEvent.click(cancelDelete);
+    const dialog = screen.queryByRole('alertdialog');
+    expect(dialog).not.toBeInTheDocument();
   });
 
   it('should call the update user function', async () => {

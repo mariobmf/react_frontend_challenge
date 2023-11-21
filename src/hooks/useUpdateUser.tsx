@@ -9,7 +9,6 @@ export function useUpdateUser() {
       updateUser({
         ...props,
       }),
-    onSuccess: (_, user) =>
-      queryClient.invalidateQueries({ queryKey: ['users', user.id] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['users'] }),
   });
 }

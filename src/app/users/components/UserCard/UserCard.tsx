@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { Spinner } from '@/components/Spinner';
 import { User } from '@/interfaces/user.interface';
 import { cpfMask, phoneNumberMask } from '@/utils/maskFormatter';
+import { useCallback, useState } from 'react';
+import { DeleteDialog } from '../DeleteDialog';
 
 interface UserCardProps {
   user: User;
@@ -16,6 +18,20 @@ export function UserCard({
   onUpdateUser,
   deleteUserIsLoading,
 }: UserCardProps) {
+  const [isDeletingUser, setIsDeletingUser] = useState(false);
+
+  const handleDeleteUser = useCallback(() => {
+    onDeleteUser(user.id);
+  }, [onDeleteUser, user.id]);
+
+  if (isDeletingUser && !deleteUserIsLoading)
+    return (
+      <DeleteDialog
+        onCancel={() => setIsDeletingUser(false)}
+        onDelete={handleDeleteUser}
+      />
+    );
+
   if (deleteUserIsLoading)
     return (
       <div className="flex h-full w-full items-center justify-center">
@@ -46,7 +62,7 @@ export function UserCard({
       </button>
       <button
         className="absolute right-4 top-4 hover:opacity-70"
-        onClick={() => onDeleteUser(user.id)}
+        onClick={() => setIsDeletingUser(true)}
         aria-label="Deletar Usuário"
       >
         <Image src="trash.svg" width={20} height={20} alt="Ícone de Lixeira" />
